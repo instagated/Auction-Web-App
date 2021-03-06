@@ -1,0 +1,627 @@
+*{
+    font-family: 'Playfair Display';
+}
+h1 {
+    text-align: center;
+    padding-top:80px;
+    padding-bottom: 40px;
+    color:#2C8C99;
+}
+
+h2 {
+    text-align: center;
+    padding-top:32px;
+    padding-bottom: 28px;
+    font-size:18px;
+}
+
+.create-btn{
+    margin-left: 2%;
+    margin-top: 6%;
+    width: 96%;
+}
+
+
+.view-det-btn {
+    display: block;
+    margin-left: 2%;
+    height: 14%;
+    width: 96%;
+    position: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #ffffff;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.W-view-det-btn {
+    display: inline-block;
+    margin-left: 0%;
+    width: 40%;
+    position: center;
+    margin-top: 7%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #ffffff;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.W-remove-btn {
+    display: inline-block;
+    margin-left: 10%;
+    /* height: 14%; */
+    width: 45%;
+    position: center;
+    margin-top: 7%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #ffffff;
+    background-color: grey;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.link-btn {
+    color:#38B2C2;
+}
+
+#submit {
+    margin-top:10%;
+    display: inline-block;
+    margin-left: 3%;
+    width: 94%;
+    position: center;
+    margin-top: 12%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #ffffff;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.W-submit {
+    font-size:0.65em;
+    margin-top:10%;
+    display: inline-block;
+    margin-left: 3%;
+    width:83%;
+    position: center;
+    margin-top: 12%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #ffffff;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.W-desc {
+    padding-top:2%
+}
+
+.form-control {
+    border-radius: 20px;
+}
+
+.view-det-btn:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.join-free-btn:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.search-style-btn:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.W-view-det-btn:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.W-remove-btn:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+.dropdown-toggle:hover {
+    opacity: 0.7;
+}
+
+.search-style-btn:hover {
+    opacity: 0.7;
+}
+
+.user-form-p {
+    text-align: center;
+    padding-top:30px;
+}
+
+.user-form-container {
+    padding-bottom: 100px;
+}
+.form-container {
+    padding-bottom: 100px;
+}
+
+
+
+.new-ad-carousel {
+    width: 76%;
+    padding-left: 25%;
+    padding-top:6%;
+    padding-bottom:6%;
+}
+
+.car-title {
+    padding-top: 15%;
+    text-align: center;
+}
+.cater-drop {
+    text-align: center;
+    padding-bottom:3%;
+    border-width: 0px;
+}
+
+.dropdown-toggle {
+    width: 30%;
+    margin-left: 35%;
+    height: 50px;
+    padding: 2px;
+    font-size: 1.1em;
+}
+input #submit {
+    margin-left: 7px;
+    margin-top: 10px;
+}
+
+
+p{
+    font-family: 'Montserrat'
+}
+nav{
+    background-color: linear-gradient(33deg, rgba(255,255,255,1) 0%, rgba(203,222,232,1) 100%);
+}
+
+.row, .text, .record-title {
+    padding: 0px;
+    margin: 0px
+}
+
+.home-logo{
+    text-align: center;
+    padding:15px;
+}
+.home-search-bar {
+    padding:15px;
+    text-align: center;
+}
+
+.search-style-btn {
+    display: block;
+    height: 7%;
+    width: 11%;
+    position: center;
+    padding-top: 9px;
+    padding-bottom: 5px;
+    color: #ffffff;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+.icon-img {
+    padding:15px;
+    text-align: center;
+}
+.home-carousel {
+    padding-left: 90px;
+    padding-right: 90px;
+    
+}
+.popular-record-see-more{
+    text-align: center;
+    padding:20px;
+    font-size: 1.5em;
+}
+
+.popular-record {
+    padding-left: 90px;
+    padding-top:30px;
+    padding-right: 90px;
+}
+.popular-record-card {
+    padding-top:1%;
+
+
+}
+
+.home-about-us{
+    font-size:1em;
+    padding:0px 60px 20px 60px;
+}
+
+
+
+
+
+/*  - - - - - - - - - - - - - - - - - - - - -     D E T A I L S - - - - */
+
+/*  - - - - v i e w    r e c o r d - - - - */
+
+.view-record{
+    padding:40px 70px 0px 70px;
+}
+.year-released {
+    text-align: center;
+    padding:5px;
+}
+
+.record-caption {
+    text-align: center;
+    text-transform: capitalize;
+    padding-top:10px;
+}
+
+.record-artist {
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+    color:#2C8C99;
+    font-size:1.4em;
+    padding-top: 30px;
+}
+
+
+/*  - - - - y o u r   b i d - - - - */
+
+div .col-lg-9{
+    padding: 0px;
+    margin: 0px
+}
+
+.bid-on-record {
+    text-align: center;
+    padding-left:30px;
+    padding-right:30px;
+    margin:0px;
+    padding-top:50px;
+    font-size: 1.5em;
+}
+
+.form-group label {
+    padding-bottom: 20px;
+}
+
+.form-group button {
+    margin-top: 20px;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+.join-free-btn {
+    color: #ffffff;
+    text-align: center;
+    background-color: lightgrey;
+    padding-top: 10px;
+    display: block;
+    margin-left: 2%;
+    height: 50px;
+    width: 96%;
+    position: center;
+    padding-bottom: 10px;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+.already-joined-btn {
+    display: block;
+    margin-left: 2%;
+    height: 50px;
+    width: 96%;
+    position: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #ffffff;
+    background-color: #38B2C2;
+    text-align: center;
+    border-width: 0px;
+    border-radius: 20px;
+}
+
+
+
+/*  - - - - p r e v i o u s   b i d s - - - - */
+
+.submitted-bids{
+    padding-top:0px;
+    margin-top: 30px;
+    margin-left:30px;
+    margin-right:30px;
+    padding: 50px;
+    }
+
+
+p .top-price, .top-bidder, .top-date, .top-time, .other-price, .other-bidder, .other-date, .other-time {
+    text-align: center;
+    line-height: 1px;
+    
+}
+
+.top-bidder{
+    padding: 0px;
+    font-size:1.2em;
+    font-weight: 600;
+    
+}
+
+.top-time{
+    font-size:1em;
+    font-weight: 400;
+    padding-top:20px;
+    padding-bottom:0px;
+}
+
+.other-price{
+    font-size:1.1em;
+    font-weight: 400;
+    padding-top:50px;
+    padding-bottom: 10px;
+    
+} 
+
+.other-bidder {
+    
+    padding-top:10px;
+    padding-bottom:0px;
+    font-weight: 600;
+}
+
+.other-date {
+    
+    padding-top:0px;
+    padding-bottom:0px;
+} 
+
+.other-time {
+    font-size: 0.7em;
+    font-weight: 400;
+    padding-top: 10px;
+    padding-bottom:0px;
+}
+
+.detail-record-see-more{
+    text-align: center;
+    font-size: 1em;
+}
+
+
+.more-record-details{
+    padding:60px;
+    padding-left: 70px;
+    text-align: center;
+    position: center;
+}
+
+.custom-control-label, .custom-range-pad, .custom-range, .form-group, .record-title, .record-artist
+
+{
+    margin: 0px;
+    padding:10px;
+    margin-bottom: 10px;
+}
+.form-det-text{
+    height:100px;
+}
+
+.song-no{
+    margin-bottom:30px;
+}
+.profile-upload{
+    text-align: center;
+    border-color:black;
+    width: 100%;
+    padding:20%;
+}
+
+.rec-price-title{
+    text-align: center;
+    font-size:18px;
+    padding-top:40px;
+}
+
+.rec-price{
+    text-align: center;
+    font-size:26px;
+    padding-top:30px;
+    color:blue;
+}
+
+.submit-update-form {
+    margin-bottom: 100px;
+}
+
+.W-date, .W-highest-bid, .W-year, .W-artist, .W-title, .W-bids, .W-closed, .W-open {
+    text-align: center;
+}
+
+
+.record-in-list{
+    padding: 1%;
+    margin: 0%;
+    margin-bottom: 2%;
+}
+
+.record-in-wlist{
+    padding: 1%;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    width: 80%;
+}
+
+.W-highest-bid{
+    font-size:1.8em;
+}
+
+.W-bids {
+    font-size: 23px;
+}
+
+
+.W-closed {
+    color:red;
+    padding-top: 10%;
+    text-transform:uppercase;
+
+}
+
+.W-open {
+    color:green;
+    font-size: 13px;
+}
+
+.W-date, .W-year {
+    font-size:10px;
+}
+
+.W-title {
+    font-size:1.2em;
+    font-family: 'Playfair Display';
+}
+.W-artist {
+    font-size:1em;
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+}
+.W-cover {
+    width:10%;
+}
+
+.W-info {
+    text-align: left;
+    margin-left:3%;
+    padding-top:1%;
+}
+
+
+.breadcrumb-item a{
+    text-decoration: none;
+    color:#2C8C99;
+}
+.panel-title:hover {
+    text-decoration: none;
+    opacity: 0.8;
+    
+}
+
+.panel-body {
+    text-align: left;
+    padding: 15px;
+    padding-bottom: 40px;
+    font-family: 'Montserrat';
+}
+
+.panel-title {
+    text-align: left;
+    position: center;
+    padding-left: 10px;
+    text-underline-position: none;
+}
+
+.panel-title:hover {
+    text-decoration: none;
+    opacity: 0.8;
+    
+}
+.panel-title a {
+    text-decoration: none;
+    
+}
+
+
+.footer {
+    width: 100%;
+    left:0;
+    bottom:0;
+    margin-top:2%;
+}
+
+
+.user-details {
+    padding-top: 10%;
+    padding-left: 5%;
+}
+
+
+.user-details p {
+    font-size: 1em;
+}
+
+.about-us{
+   padding:10%;
+}
+.about-us p {
+    font-size: 0.9em;
+}
+
+.ftr-p {
+    line-height:27px;
+    padding-top: 4%;
+
+}
+.text-dark {
+    line-height: 29px;;
+}
+.member-already {
+    text-align: center;
+    margin-top:10%;
+    padding-top: 20px;
+    font-size: 1em;
+}
+
+.user-form {
+    width:60%;
+    text-align: center;
+}
+
+
+
+@media (min-width: 1200px) 
+{.container, .container-lg, .container-md, .container-sm, .container-xl 
+{
+        max-width: 1340px
+    }
+}
+
+@media (min-width: 600px) 
+{.dropdown-toggle 
+{
+        width:50%;
+        margin-left:25%;
+    }
+}

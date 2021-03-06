@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block header %}
+
+<main>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Watchlist</li>
+        </ol>
+    </nav>
+    <h1>{{ current_user.name }}'s watchlist</h1>
+{% endblock %}
+    
+{% block content %}   
+<div class="container">
+    <!-- justified in the center, margin top and bottom and the column contains a 10 grid -->
+
+     {% for watchlist in watchlists %} 
+
+     {% for item in items %} 
+     
+     {% if watchlist.user_id == current_user.id and watchlist.item_id == item.id %}
+     <div class="card record-in-wlist col-12">
+
+      <div class="row">
+
+       <!-- record cover art -->
+       <div class="W-cover col-sm-12 col-md-6 col-lg-2">
+          <a href="{{url_for('item.show', id=item.id)}}">
+            <img width="200px" src="{{item.cover}}" alt="{{item.record_name}}">
+          </a>
+        </div>
+      
+        <div class="W-info col-sm-12 col-md-6 col-lg-3">
+        <!-- record details -->
+         <!-- Current Price ---- If item has at least one bid placed, displays highest bid value -->
+         {% if (item.bids|length) > 0 %}
+         <p class="W-highest-bid"> ${{item.current_bid}}</p>
+
+         <!-- If item has no bids placed, displays "None" -->
+         {% else %}
+         <p class="W-highest-bid"> {{item.current_bid}}</p>
+         {% endif %}
+
+         <!-- Record Title -->
+         <p class="W-title">{{item.record_name}}</p>
+
+         <!-- Record Artist -->
+         <p class="W-artist">{{item.artist}}</p>
+
+         <!-- If the item is not closed, set status to "Open" -->
+         {% if item.time == 'Closed' %}   
+         <p class="W-closed" style=" color:red; font-size: 1em;">Auction Closed</p>
+         {% endif %}
+
+
+         <!-- check if singular -->
+         {% if item.bids|length == 1 %}
+         <p class="W-bids " style=" font-size: 0.8em;">{{item.bids|length}} bid placed</p>  
+         
+         <!-- else if multiple -->
+         {% else %}
+         <p class="W-bids card-text" style="font-size: 0.8em;">{{item.bids|length}} bids placed</p>
+         {% endif %}
+        </div>
+
+        <div class="W-desc col-sm-12 col-md-5">
+
+         <!-- Record Description -->
+         <p>{{item.description}}</p>
+
+         <!-- More Info Button that redirects to details page for a specific item -->
+         <a href="{{url_for('item.show', id=item.id)}}" class="W-view-det-btn" style="text-align:center;">View Details</a>        
+         
+         
+
+        </div>
+
+
+         {% endif %}
+         
+         {% endfor %}       
+       </div>
+
+      </div>
+
+     {% endfor %} 
+
+
+     
+
+    </div>
+ </div>
+{% endblock %}
+    
+</main>
+<footer>
+    </footer>
+</body>
+</html>

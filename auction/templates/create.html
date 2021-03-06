@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block header %}
+<main>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">List New Item</li>
+  </ol>
+</nav>
+{% endblock %}
+
+
+{% block content %}
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-md-12">
+
+        <h1>List New Record</h1>
+        <!-- Renders Item form -->
+        {{wtf.quick_form(form)}}
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

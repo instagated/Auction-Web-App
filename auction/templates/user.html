@@ -1,0 +1,104 @@
+{% include "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block body %}
+
+{% block content %}
+<div class="container" style="min-height:100%; width:80%">
+	{% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
+</div>
+
+
+<div class="row">
+  <!-- Renders login form -->
+  <div class="col-lg-6 col-12 user-form-container">
+   
+    <div class="page-header">
+      <h1>{{heading}}</h1>
+    </div>
+
+          <!-- Renders Item form -->
+          {{wtf.quick_form(form)}}
+
+          <!-- Button for registering an account -->
+          {% if heading|lower =='login' %}
+          <div class="user-form-p">
+              <p>New user? <a class="link-btn" href="{{ url_for('auth.register') }}">Click here to register!</a></p>
+          </div> 
+          {% endif %}
+  </div>
+
+
+  <div class="col-lg-6">
+      <!-- Renders Item form -->
+      <h3 class="car-title">New Additions</h3>
+
+      <div class="new-ad-carousel">
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              </ol>
+              
+              <div class="carousel-inner">
+                  
+              <div class="carousel-item active">
+                  <a href="#"><img src="https://pbs.twimg.com/media/EU9HhO3U4AAFiTE.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Chromatica - Lady Gaga</h5>
+                    </div>
+                </a>
+              </div>
+                  
+              <div class="carousel-item">
+                  <a href="#"><img src="https://upload.wikimedia.org/wikipedia/en/f/f8/Taylor_Swift_-_Folklore.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Folklore - Taylor Swift</h5>
+                    </div>
+                </a>
+              </div>
+                  
+              <div class="carousel-item">
+                  <a href="##"><img src="https://www.rollingstone.com/wp-content/uploads/2020/06/X-Album-Art-2020.jpg?w=1000" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5>Alphabet Land - X</h5>
+                    </div>
+                </a>
+
+              </div>
+                  
+              </div>
+                  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                  </a>
+                  
+                  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                  </a>
+          </div>
+        </div>
+
+
+    </div>
+
+</div>
+  
+
+
+
+{% endblock %}

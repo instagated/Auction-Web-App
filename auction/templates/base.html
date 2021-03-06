@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+      
+    
+      
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+
+    <script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+    });
+    </script>
+
+    <title>Record Auction</title>
+    </head>
+    <body>
+        <header>
+        <!-- Image and text -->
+                <nav class="navbar sticky-top navbar-light bg-light">
+                
+                    <a class="home-logo navbar-brand col-sm-12 col-md-2 col-lg-2" href="/">
+                        <img src="static/images/record-logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                        Record Factory
+                    </a>
+
+                    <!-- Search bar for searching by title for records -->
+                    <form class="form-inline col-12 col-sm-6 col-md-4 col-lg-6 home-search-bar" action="{{url_for('main.search')}}">
+                        <input type="text" name="search" class="col-10 form-control flex-grow-1" placeholder="Search by the record's title... (i.e. Thriller)">
+                        <button type="submit" class="search-style-btn col-2">
+                            <img src="static/images/search-icon-white-one-hi.png" width="20" height="20" class="d-inline-block align-top" alt="" loading="lazy">
+                        </button>
+                    </form>
+
+                    
+                    <!-- If user is logged in, redirects to item listing page -->
+                    {% if current_user.is_authenticated %}
+                    <a class="icon-img col-sm-1 col-4" data-toggle="tooltip" title="List a Record" href="{{ url_for('item.create')}}">
+                        <img src="static/images/add-new-icon.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    </a>
+                    <!-- If not logged in, redirects to login page -->
+                    {% else %} 
+                    <a class="icon-img col-sm-1 col-4" data-toggle="tooltip" title="Log-In to access this feature" href="{{ url_for('auth.login') }}">
+                        <img src="static/images/add-new-icon.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    </a>
+                    {% endif %} 
+
+
+                    <!-- Watchlist -->
+                    <a class="icon-img col-sm-1 col-4" data-toggle="tooltip" title="View Watchlist" href="/watchlist">
+                        <img src="static/images/watchlist-icon.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    </a>
+
+                    <!-- If user is logged in, redirects to item listing page -->
+                    {% if current_user.is_authenticated %}
+                    <h2 class="text-info">Welcome, {{current_user.name}}</h2>
+                    <!-- If not logged in, redirects to login page -->
+                    {% else %} 
+                    <a class="icon-img col-sm-1 col-4" data-toggle="tooltip" title="Log-In to access this feature" href="{{ url_for('auth.login') }}">
+                        <img src="static/images/profile-icon.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                    </a>
+                    {% endif %} 
+
+                    
+            
+                </nav>        
+        </header>
+    <main>
+
+        {% block header %}
+        {% endblock %}
+
+        </header>
+
+        {% block content %}
+        {% endblock %}
+
+    </main>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/style.css">
+  </body>
+    </body>
+</html>

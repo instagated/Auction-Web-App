@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<main>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+      </ol>
+    </nav>
+    <h1>Welcome! Browse through recently posted auctions... </h1>
+
+    <div class="col-12 dropdown cater-drop">
+      <button class="view-det-btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Categories
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="cat?cat=Pop">Pop</a>
+        <a class="dropdown-item" href="cat?cat=Indie">Indie</a>
+        <a class="dropdown-item" href="cat?cat=Jazz">Jazz</a>
+        <a class="dropdown-item" href="cat?cat=Country">Country</a>
+        <a class="dropdown-item" href="cat?cat=Rock">Rock</a>
+        <a class="dropdown-item" href="cat?cat=Hip-Hop">Hip-Hop</a>
+        <a class="dropdown-item" href="cat?cat=R+&amp;+B">R&amp;B</a>
+        <a class="dropdown-item" href="cat?cat=Rap">Rap</a>
+        <a class="dropdown-item" href="cat?cat=Electronic">Electronic</a>
+        <a class="dropdown-item" href="cat?cat=Folk">Folk</a>
+        <a class="dropdown-item" href="cat?cat=Classical">Classical</a>
+        <a class="dropdown-item" href="cat?cat=Film+Score">Film Score</a>
+      </div>  
+    </div>
+
+{% endblock %}
+      
+{% block content %}
+<div class="container">
+
+    <!-- justified in the center, margin top and bottom and the column contains a 10 grid -->
+   <div class="row">
+     {% for item in items %} 
+
+
+     <div class="card record-in-list col-lg-3 col-md-4 col-sm-12 col-12">
+
+
+       <a href="{{url_for('item.show', id=item.id)}}"><img class="card-img-top" src="{{item.cover}}" alt="{{item.record_name}}"></a>
+       <div class="card-body">
+
+         <!-- Current Price ---- If item has at least one bid placed, displays highest bid value -->
+         {% if (item.bids|length) > 0 %}
+         <p class="W-highest-bid card-text"> ${{item.current_bid}}</p>
+
+         <!-- If item has no bids placed, displays "None" -->
+         {% else %}
+         <p class="W-highest-bid card-text"> {{item.current_bid}}</p>
+         {% endif %}
+
+         <!-- Record Title -->
+         <p class="W-title card-text">{{item.record_name}}</p>
+
+         <!-- Record Artist -->
+         <p class="W-artist card-text">{{item.artist}}</p>
+
+
+
+
+         <!-- Displays number of bids placed on a particular item -->
+
+         <!-- check if singular -->
+         {% if item.bids|length == 1 %}
+         <p class="W-bids card-text" style="text-align:center; font-size: 0.8em;">{{item.bids|length}} bid placed</p>  
+         
+         <!-- else if multiple -->
+         {% else %}
+         <p class="W-bids card-text" style="text-align:center; font-size: 0.8em;">{{item.bids|length}} bids placed</p>
+         {% endif %}
+
+         <!-- More Info Button that redirects to details page for a specific item -->
+         <a href="{{url_for('item.show', id=item.id)}}" class="view-det-btn" style="text-align:center;">View Details</a>
+
+         <!-- If the item is not closed, set status to "Open" -->
+         {% if item.time == 'Closed' %}   
+         <p class="W-closed card-text" style="text-align:center; color:red; font-size: 0.7em;">Auction Closed</p>
+         {% endif %}
+
+       </div>
+
+
+     </div>
+
+
+     {% endfor %}
+   </div>
+ </div>
+
+        
+  </body>
+
+  
+<footer class="footer">
+  <div class="row bg-light">
+    <div class="col-sm-4 col-12 user-details">
+
+      {% if current_user.is_authenticated %}
+      <h3 class="welcome-message">Welcome, {{ current_user.name }}</h3>
+      <br>
+      <a class="link-btn" href="{{ url_for('auth.logout') }}"><h3>Log Out!</h3></a>
+      
+      {% else %}
+      <a class = "join-free-btn" href="{{ url_for('auth.register') }}"><h3 class="join-us">Join us now for Free!</h3></a>
+      <p class ="member-already">Alread a member?</p>
+      <a class = "already-joined-btn"a href="{{ url_for('auth.login') }}"><h3 class="join-us">Login to your account</h3></a>
+      {% endif %}
+    </div>
+
+    <div class="col-sm-8 col-12 about-us">
+      <h3>About Us</h3>
+        <p class="ftr-p">The Record Factory is a leading, Brisbane based auction company. 
+          The site is made for Vinyl lovers to improve their collections. It provides a platform 
+          for users to recieve the best price for vinyl records that are no longer desired and also 
+          an opportunity for purchases of all types of records uploaded by anyone. We will always 
+           deliver a stable, fast and friendly user experience to our customers and best of all, 
+           are continually working hard to make sure the best range of music will always be 
+           available to our loyal customers.</p>
+
+      <span class="text-dark">Copyright &copy; The Record Factory</span>
+    </div>
+  </div>
+</footer>
+{% endblock %}
+</html>

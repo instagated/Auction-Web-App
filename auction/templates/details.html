@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block header %}
+<main>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Bid for Record</li>
+  </ol>
+</nav>
+<!-- Displays message if user is viewing an item they have listed -->
+{% if current_user.id == item.user_id and item.time != "Closed" %}     
+<h2 class="text-info"><strong>You are the owner of this listed item.</strong></h2>
+{% elif current_user.id == item.user_id and item.time == "Closed" %}
+<h2 class="text-info"><strong>You have closed the auction for this item.</strong></h2>
+{% endif %}
+
+{% if current_user.id != item.user_id and item.time == "Closed" %}     
+<h2 class="text-info"><strong>The item has now been closed by the seller.</strong></h2>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container" style="min-height:100%; width:80%">
+	{% with messages = get_flashed_messages(with_categories=true) %}
+  <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <!-- <strong>Title</strong> --> {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+	
+	{% block body %}{% endblock %}
+	</div>
+    <div class = "row">
+        
+        <div class="view-record col-lg-5 col-md-6 col-sm-12">
+            <img src="{{item.cover}}" class="record-img d-block w-100" alt="Record">
+            <h3 class="record-caption text-primary">{{item.record_name}}</h3>
+            <h2 class="record-artist">{{item.artist}}</h2>
+            <p class="year-released text-danger">{{item.genre}}</p>
+            <p class="year-released">{{item.year}}</p>
+            
+        </div>
+        <!-- If the user is logged in -->
+        
+        <div class="bid-on-record col-lg-3 col-md-6 col-sm- col-12">
+            <div class="col-lg-9 col-12 form-group">
+
+                <!-- If the item is open -->
+                {% if item.time != 'Closed' and  current_user.id != item.user_id %}
+                <label for="formGroupExampleInput"> {{wtf.quick_form(form)}}</label> 
+                {% endif %}         
+
+                <!-- If user is viewing an item they have listed, display the "Close Auction" button -->
+                {% if current_user.id == item.user_id %}
+                <form method="post">      
+                <input class="button btn btn-info" type="submit" id="form2" name="form2" value="Close Auction"> 
+                </form> 
+                <!-- If an item is not closed, and the user did not list the item, display the "Add To Watchlist" button -->
+                {% elif current_user.id != item.user_id and  item.time != 'Closed' %}   
+                <form method="post"> 
+                  <input  class="W-submit" type="submit" id="form3" name="form3" value="Add to Watchlist">    
+                </form>                             
+                {% endif %}
+
+                            
+            </div>
+        </div>
+
+            <div class="card submitted-bids col-lg-3">                
+                <h1>Item Status: </h1>
+                <!-- If item is open -->
+                {% if item.time != 'Closed' %} 
+                <h4 class="top-bidder">{{item.time}} Remaining</h4>
+                <!-- If item is closed -->
+                {% else %} 
+                <h4 class="top-bidder">{{item.time}}</h4>
+                {% endif %}
+                <br>
+                <h2>Listed at: ${{item.starting_bid}}</h2>
+                {% if current_user.id == item.user_id %}
+                <h2>Current Bids</h3>
+                {% else %}
+                <h2>Current Bid</h3>
+                {% endif %}
+                <hr>
+
+                <!-- If the item is listed by current user logged in, show all bids -->
+                {% if current_user.id == item.user_id %}
+                {% for bid in item.bids %}
+                <!-- If the item is open -->
+                {% if item.time != 'Closed' %} 
+                <b>Username: {{bid.user.name}}<span class="ml-2 text-muted">Time: {{bid.bid_time}}</span></b>  
+                <p>${{bid.bid_amount}}</p> 
+                <!-- If the item is closed, display winning bid -->
+                {% elif item.time == 'Closed' %}
+                {% if (item.bids | length) > 0 %}
+                {% if bid.bid_amount != item.current_bid %} 
+                <b>Username: {{bid.user.name}}<span class="ml-2 text-muted">Time: {{bid.bid_time}}</span></b>  
+                <p>${{bid.bid_amount}}</p> 
+                {% elif bid.bid_amount == item.current_bid %}
+                <div class="p-3 mb-2 bg-success text-white"><b>Username: {{bid.user.name}}</b><span class="ml-2 text-white">Time: {{bid.bid_time}}</span> 
+                  <p class="text-white">${{bid.bid_amount}} [WON]</p></div>                
+                {% endif %}                
+                {% endif %}
+                {% endif %}
+                {% else %}
+                <div class="p-3 mb-2 text-primary"><h4 class="top-bidder">No bids have been made.</h4></div> 
+                {% endfor %}
+
+                <!-- If item is closed with no bids -->
+                {% elif item.time != 'Closed' %} 
+                {% if (item.bids | length) == 0 %} 
+                <h2><b>No current bids made yet.</b></h2> 
+                {% else %}              
+                <h2><b>${{item.current_bid}}</b></h2>  
+                {% endif %}   
+                <!-- If item is closed with bids -->
+                {% elif item.time == 'Closed'  %}                   
+                <div class="p-3 mb-2 bg-warning text-white"><h2><b>${{item.current_bid}}</b></h2></div>
+                {% else %}                
+                <div class="p-3 mb-2 bg-warning text-white"><h2><b>${{item.current_bid}}</b></h2></div>
+                {% endif %}
+                <hr>
+
+                <a class="link-btn col-12" href="/">View More Listings</a>
+
+            </div>
+        
+    </div>   
+
+    <div class="row">
+      <div class="more-record-details">
+          
+        <h3 class="record-artist">DESCRIPTION</h2>
+        <hr>
+          <h2>{{item.description}} </h3>   
+            
+            
+    </div>   
+</main>
+<footer>
+  </footer>
+  {% endblock %}  
+</body>
+</html>
